@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="passtorage",
-    version="0.0.1",
+    version="0.0.5",
     requires = ['random', 'pyperclip'],
     author="Matías Pretz",
     url='https://github.com/matipretz/passtorage',
