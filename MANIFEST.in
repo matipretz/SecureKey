@@ -1,0 +1,4 @@
+include src/data/reg/test
+include src/data/icon.ico
+include src/data/reg
+include src/data/backups

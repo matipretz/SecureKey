@@ -1,0 +1,2 @@
+[console_scripts]
+passtorage-cli = src.__main__:main
