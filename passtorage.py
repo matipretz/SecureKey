@@ -1,58 +1,65 @@
-from random import choice, randint
+import random
 import pyperclip
 import sys
 import os
 import os.path
 import errno
 import shutil
-from os.path import basename
+
 def clear():
-    os.system('cls')
+    if sys.platform.startswith('win'):
+        os.system('cls')  # for Windows
+    else:
+        os.system('clear')  # for Unix/Linux/Mac
+
 def cont():
     input("Press Enter to continue.")
+
 def invalid():
     print("Invalid input, please try again.")
-def autosave(pwd):
+
+def save(pwd):
             title = input("Name your password:")
             file = open('data/reg/'+title, "a")
             file.write(str(pwd))
-            file.close()            
+            file.close()
+
 def lista():
     directorio = os.listdir('data/reg/')
     archivos = [os.path.splitext(x)[0] for x in directorio]
     for line in archivos:
         line = line.strip()
-        line = line.split('\t', 0)
-        print (line)
+        line = line.split('\t')
+        print(line)
     return archivos
+
 def listabk():
     directorio = os.listdir('data/backups/')
     archivos = [os.path.splitext(x)[0] for x in directorio]
     for line in archivos:
         line = line.strip()
-        line = line.split('\t', 0)
-        print (line)
-    return archivos
-def copy(src, dest):
-            try:
-                shutil.copytree(src, dest)
-                print("Back up created.")
-            except OSError as e:
-                # If the error was caused because the source wasn't a directory
-                if e.errno == errno.ENOTDIR:
-                    shutil.copy(src, dest)
-                else:
-                    print('Directory not copied. Error: %s' % e)
-def paster(src, dest):
-            try:
-                shutil.copytree(src, dest)
-                print("Back up restored.")
-            except OSError as e:
-                # If the error was caused because the source wasn't a directory
-                if e.errno == errno.ENOTDIR:
-                    shutil.copy(src, dest)
-                else:
-                    print('Directory not copied. Error: %s' % e)                    
+        line = line.split('\t')
+        print(line)
+    return archivos          
+
+def backup(src, dest, restore=False):
+    try:
+        if restore:
+            shutil.copytree(src, dest)
+            print("Back up restored.")
+        else:
+            shutil.copytree(src, dest)
+            print("Back up created.")
+    except OSError as e:
+        if e.errno == errno.ENOTDIR:
+            shutil.copy(src, dest)
+            if restore:
+                print("File restored.")
+            else:
+                print("File copied.")
+        else:
+            print("Directory not copied. Error: %s" % e)
+            
 #MAIN MENU#
 while True:
     clear()
@@ -74,24 +81,18 @@ while True:
     if choose == 1: 
         clear()
         try:
-            lenght = int(input("Set password lenght and press enter:"))
+            length = int(input("Set password length and press enter:"))
         except ValueError:
             invalid()
             cont()
             continue    
-        capitals = "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"
-        letters = "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"
-        digits = "1", "2", "3", "4", "5", "6", "7", "8", "9", "0"
-        simbols = "!", "@", "#", "$", "%", "&", "?", "=", "+", "-", "*", "/"
-        chars = capitals + letters + digits 
-        min_length = lenght
-        max_length = lenght
-        password = "".join(choice(chars)
-                           for x in range(randint(min_length, max_length)))
+        chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789¡!¿?@#$%&=+-*/"
+        mylength = length
+        password = "".join(random.choice(chars) for _ in range(length))        
         print("Password generated:", password)
         pyperclip.copy(password)
-        print("Your pasword is", lenght, "characters long")
-        autosave(password)
+        print("Your pasword is", length, "characters long")
+        save(password)
         print("You password has been stored and copied to clipboard.")
         cont()
         clear()
@@ -160,7 +161,7 @@ while True:
         opt = input("Enter choice: ")    
         if opt == "1":
             newbk = input("Name your new Back up: ")
-            copy('data/reg/','data/backups/'+newbk+'/')
+            backup('data/reg/','data/backups/'+newbk+'/')
             cont()        
         elif opt == "2":
             clear()
@@ -170,7 +171,7 @@ while True:
                 check= input("This action will remove all previously saved data. Do you wish to continue?\nPlease enter y/n: ")
                 if check == "y":
                     shutil.rmtree('data/reg/')
-                    paster('data/backups/'+bk+'/','data/reg/')
+                    backup('data/backups/'+bk+'/','data/reg/', restore=True)
                     cont()
                 if check == "n":
                     print("Action CANCELED")
