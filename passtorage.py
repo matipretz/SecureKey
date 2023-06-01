@@ -1,11 +1,12 @@
-import random
-import pyperclip
-import sys
+import errno
 import os
 import os.path
-import errno
+import random
 import shutil
+import sys
 import time
+import pyperclip
+
 
 def dots():    
    time.sleep(1)
