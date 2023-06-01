@@ -1,4 +1,4 @@
-The main objective of passtorage is to generate random passwords and store them in individual  files.
+The main objective of passtorage is to generate random passwords and store them in individual files.
 It futures recover, overwrite, delete and backup said passwords. 
 Developed for Windows 10 and Python 3.11 (not tested in other versions). 
 
