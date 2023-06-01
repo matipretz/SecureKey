@@ -1,8 +1,7 @@
-from random import random, choice, randint
+from random import choice, randint
 import pyperclip
 import sys
 import os
-import re
 import os.path
 import errno
 import shutil
