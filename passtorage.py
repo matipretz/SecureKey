@@ -1,12 +1,21 @@
 import errno
 import os
 import os.path
+import pyperclip
 import random
 import shutil
 import sys
 import time
-import pyperclip
 
+def check_directories():
+    directories = ['data/reg', 'data/backups']
+    for directory in directories:
+        if not os.path.exists(directory):
+            try:
+                os.makedirs(directory)
+            except OSError as e:
+                print('Error creating directory:', directory)
+                print('Error:', e)
 
 def dots():    
    time.sleep(1)
@@ -32,12 +41,13 @@ def save(pwd):
             break
         else:
             print("Password name cannot be empty. Please enter a valid name.")
-
+    check_directories()
     file = open('data/reg/' + title, 'a')
     file.write(str(pwd))
     file.close()
 
 def listar_archivos(directorio):
+    check_directories()
     archivos = [os.path.splitext(x)[0] for x in os.listdir(directorio)]
     for line in archivos:
         line = line.strip().split('\t')
@@ -45,6 +55,7 @@ def listar_archivos(directorio):
     return archivos
 
 def backup(src, dest, restore=False):
+    check_directories()
     try:
         if restore:
             shutil.copytree(src, dest)
@@ -64,8 +75,8 @@ def backup(src, dest, restore=False):
         else:
             print('Directory not copied. Error: %s' % e)
             
-#MAIN MENU#
-while True:
+while True:#MAIN MENU#
+    check_directories()
     clear()
     print('\033[92m###MAIN MENU###' '\x1b[0m')
     print('Select option:')
@@ -80,8 +91,8 @@ while True:
     except ValueError:
         invalid()
         continue
-#GENERATE#
-    if choose == 1: 
+
+    if choose == 1:#GENERATE#
         clear()
         print('\033[92m###GENERATE###' '\x1b[0m')
         try:
@@ -100,8 +111,8 @@ while True:
         print('You password has been stored and copied to clipboard.')
         cont()
         continue
-#OVERRIDE#
-    elif choose == 2: 
+
+    elif choose == 2:#OVERRIDE#
         clear() 
         print('\033[92m###OVERRIDE###' '\x1b[0m')
        
@@ -117,12 +128,10 @@ while True:
         else:
             invalid()
         continue
-#RETRIVE#
-    elif choose == 3:
-        clear()
-        print('\033[92m###RETRIVE###' '\x1b[0m')
 
-        
+    elif choose == 3:#RETRIVE#
+        clear()
+        print('\033[92m###RETRIVE###' '\x1b[0m')        
         lst = listar_archivos('data/reg/')
         file = input('Type password name to retrive:')
         if file in lst:
@@ -138,8 +147,8 @@ while True:
             print('Password not found')
             cont()            
             continue
-#REMOVE# 
-    elif choose == 4:           
+
+    elif choose == 4:#REMOVE# 
             clear()
             print('\033[92m###REMOVE###' '\x1b[0m')
 
@@ -162,8 +171,8 @@ while True:
             else:
                 invalid()
             continue
-#BACK UP#
-    elif choose == 5:
+    
+    elif choose == 5:#BACK UP#
         clear()
         print('\033[92m###BACK UP###' '\x1b[0m')
         print('\n1.Write new Back Up.\n2.Restore previous Back Up.\n3.Cancel.')
@@ -191,9 +200,8 @@ while True:
         else:
             invalid()
         continue
-        
-#EXIT#
-    elif choose == 6:
+
+    elif choose == 6:#EXIT#
         clear()        
         input('Press ENTER to exit')
         sys.exit(0)
