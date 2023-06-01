@@ -3,6 +3,7 @@ It futures recover, overwrite, delete and backup said passwords.
 Developed for Windows 10 and Python 3.11 (not tested in other versions). 
 
 Currently uses the modules: errno, os, pyperclip, random, shutil, sys and time.
+passtorage creates directory tree at start
 
 Distributed under the MIT license. 
 Any intentions to port this application to another platform are welcome.
