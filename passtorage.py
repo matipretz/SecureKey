@@ -1,4 +1,5 @@
 import errno
+import importlib
 import os
 import os.path
 import pyperclip
@@ -6,6 +7,24 @@ import random
 import shutil
 import sys
 import time
+
+
+def import_library(library_name):
+    try:
+        importlib.import_module(library_name)
+    except ImportError:
+        print(f"La librería '{library_name}' no está instalada. Instalando...")
+        try:
+            import pip
+        except ImportError:
+            print("No se encontró el módulo 'pip'. Asegúrate de tenerlo instalado.")
+            return
+        
+        try:
+            pip.main(["install", library_name])
+            print(f"La librería '{library_name}' se instaló correctamente.")
+        except Exception as e:
+            print(f"Error al instalar la librería '{library_name}': {str(e)}")
 
 def check_directories():
     directories = ['data/reg', 'data/backups']
@@ -76,6 +95,7 @@ def backup(src, dest, restore=False):
             print('Directory not copied. Error: %s' % e)
             
 while True:#MAIN MENU#
+    import_library('pyperclip')
     check_directories()
     clear()
     print('\033[92m###MAIN MENU###' '\x1b[0m')
