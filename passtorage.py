@@ -98,7 +98,7 @@ while True:#MAIN MENU#
     import_library('pyperclip')
     check_directories()
     clear()
-    print('\033[92m###MAIN MENU###' '\x1b[0m')
+    print('\033[92m### MAIN MENU ###' '\x1b[0m')
     print('Select option:')
     print('1.Generate')
     print('2.Override')
@@ -114,7 +114,7 @@ while True:#MAIN MENU#
 
     if choose == 1:#GENERATE#
         clear()
-        print('\033[92m###GENERATE###' '\x1b[0m')
+        print('\033[92m### GENERATE ###' '\x1b[0m')
         try:
             length = int(input('Set password length and press enter:'))
         except ValueError:
@@ -134,7 +134,7 @@ while True:#MAIN MENU#
 
     elif choose == 2:#OVERRIDE#
         clear() 
-        print('\033[92m###OVERRIDE###' '\x1b[0m')
+        print('\033[92m### OVERRIDE ###' '\x1b[0m')
        
         lst = listar_archivos('data/reg/')
         file = str(input('Type password name to Override:'))
@@ -151,7 +151,7 @@ while True:#MAIN MENU#
 
     elif choose == 3:#RETRIVE#
         clear()
-        print('\033[92m###RETRIVE###' '\x1b[0m')        
+        print('\033[92m### RETRIVE ###' '\x1b[0m')        
         lst = listar_archivos('data/reg/')
         file = input('Type password name to retrive:')
         if file in lst:
@@ -170,7 +170,7 @@ while True:#MAIN MENU#
 
     elif choose == 4:#REMOVE# 
             clear()
-            print('\033[92m###REMOVE###' '\x1b[0m')
+            print('\033[92m### REMOVE ###' '\x1b[0m')
 
             lst = listar_archivos('data/reg/')
             rem = input('Type password name to REMOVE and press ENTER:')
@@ -194,7 +194,7 @@ while True:#MAIN MENU#
     
     elif choose == 5:#BACK UP#
         clear()
-        print('\033[92m###BACK UP###' '\x1b[0m')
+        print('\033[92m### BACK-UP ###' '\x1b[0m')
         print('\n1.Write new Back Up.\n2.Restore previous Back Up.\n3.Cancel.')
         opt = input('Enter choice: ')    
         if opt == '1':
