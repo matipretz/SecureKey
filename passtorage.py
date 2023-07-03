@@ -78,11 +78,13 @@ def backup(src, dest, restore=False):
     try:
         if restore:
             shutil.copytree(src, dest)
-            print('Restoring back up'+dots())
+            print('Restoring back up')
+            dots()
             print('Back up restored.')
         else:
             shutil.copytree(src, dest)
-            print('Creating back up'+dots())
+            print('Creating back up')
+            dots()
             print('Back up created.')
     except OSError as e:
         if e.errno == errno.ENOTDIR:
@@ -123,7 +125,7 @@ while True:#MAIN MENU#
         chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789¡!¿?@#$%&=+-*/'
         mylength = length
         password = ''.join(random.choice(chars) for _ in range(length))
-        print(dots())       
+        dots()  
         print('Password generated:', password)
         pyperclip.copy(password)
         print('Your pasword is', length, 'characters long')
