@@ -1,1 +1,7 @@
-
+errno
+os
+pyperclip
+random
+shutil
+sys
+time
