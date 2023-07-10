@@ -111,11 +111,10 @@ while True:  # MAIN MENU#
         except ValueError:
             invalid()
             continue
-        chars = (
-            "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*.()"
-        )
+        chars = ("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz\
+                 0123456789!@#$%^&*.()")
         mylength = length
-        password = "".join(random.choice(chars) for _ in range(length))
+        password = "".join(random.choice(chars) for r in range(length))
         dots()
         print("Password generated:", password)
         pyperclip.copy(password)
@@ -168,7 +167,8 @@ while True:  # MAIN MENU#
         lst = listar_archivos("data/reg/")
         rem = input("Type password name to REMOVE and press ENTER:")
         if rem in lst:
-            a = input(" Are you sure to delete current Password?\n Please enter y/n:")
+            a = input(" Are you sure to delete current Password?\n \
+                      Please enter y/n:")
             if a == "y":
                 if os.path.exists("data/reg/" + rem):
                     os.remove("data/reg/" + rem)
@@ -200,7 +200,8 @@ while True:  # MAIN MENU#
             bk = input("Select which copy do you want to restore: ")
             if bk in lst_backups:
                 check = input(
-                    "This action will remove all previously saved data. Do you wish to continue?\nPlease enter either y/n: "
+                    "This action will remove all previously saved data. Do you\
+                          wish to continue?\nPlease enter either y/n: "
                 )
                 if check == "y":
                     shutil.rmtree("data/reg/")

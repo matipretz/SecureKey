@@ -1,9 +1,0 @@
-The main objective of passtorage is to generate random passwords and store them in individual files.
-It features recovery, overwrite, delete and backup said passwords. 
-Developed for Windows 10 and Python 3.11 (not tested in other versions). 
-
-Currently uses the modules: errno, os, pyperclip, random, shutil, sys and time.
-Passtorage creates directory tree at start and tryes to install pyperclip via pip.
-
-Distributed under the MIT license. 
-Any intentions to port this application to another platform are welcome.
