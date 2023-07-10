@@ -1,5 +1,4 @@
 import errno
-import importlib
 import os
 import os.path
 import pyperclip
