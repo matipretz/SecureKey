@@ -2,6 +2,9 @@
   <h1 align="center">SecureKey</h1>
 </p>
 
+![Portada](./images/pic01.png)
+
+
 1. [Introduction](#introduction)
 2. [Description](#description)
    - [Functionality](#functionality)
