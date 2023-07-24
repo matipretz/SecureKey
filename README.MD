@@ -1,6 +1,5 @@
 <p align="center">
   <h1 align="center">SecureKey</h1>
-  <img width="33%" src="./images/pic01.png"> 
 </p>
 
 <p align="center" width="100%">
