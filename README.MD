@@ -1,9 +1,8 @@
 <p align="center">
   <h1 align="center">SecureKey</h1>
-   <img align="center" src="./images/pic01.png" />
- </p>
+</p>
 
-![Portada](./images/pic01.png)
+<img align="center" width="33%" src="./images/pic01.png">
 
 1. [Introduction](#introduction)
 2. [Description](#description)
