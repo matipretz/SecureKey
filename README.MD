@@ -1,5 +1,7 @@
 <p align="center">
   <h1 align="center">SecureKey</h1>
+  ![Portada](./images/pic01.png)
+
 </p>
 
 ![Portada](./images/pic01.png)
