@@ -4,6 +4,10 @@
 
 <img align="center" width="33%" src="./images/pic01.png">
 
+<p align="center" width="100%">
+    <img width="33%" src="./images/pic01.png"> 
+</p>
+
 ##
 
 1. [Introduction](#introduction)
