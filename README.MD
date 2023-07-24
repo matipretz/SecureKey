@@ -1,8 +1,7 @@
 <p align="center">
   <h1 align="center">SecureKey</h1>
-  ![Portada](./images/pic01.png)
-
-</p>
+   <img align="center" src="./images/pic01.png" />
+ </p>
 
 ![Portada](./images/pic01.png)
 
@@ -108,8 +107,6 @@ Also, the program relies on the following packages: errno, os, pyperclip, random
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](https://raw.githubusercontent.com/matipretz/SecureKey/main/LICENSE.md) file for more details.
-
-
 
 ## Roadmap
 
