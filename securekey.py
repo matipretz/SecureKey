@@ -118,7 +118,7 @@ while True:  # MAIN MENU#
         dots()
         print("Password generated:", password)
         pyperclip.copy(password)
-        print("Your pasword is", length, "characters long")
+        print("Your password is", length, "characters long")
         save(password)
         print("You password has been stored and copied to clipboard.")
         cont()
@@ -150,7 +150,7 @@ while True:  # MAIN MENU#
             clear()
             with open("data/reg/" + file, "r") as myfile:
                 data = myfile.read()
-                print("Your " + file + " Passwoerd is:" + data)
+                print("Your " + file + " password is:" + data)
                 pyperclip.copy(data)
                 print("Password copied to clipboard")
                 input("Press Enter to Main Menu")
