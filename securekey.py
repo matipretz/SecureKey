@@ -111,8 +111,8 @@ while True:  # MAIN MENU#
         except ValueError:
             invalid()
             continue
-        chars = ("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz\
-                 0123456789!@#$%^&*.()")
+        chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz\
+                 0123456789!@#$%^&*.()"
         mylength = length
         password = "".join(random.choice(chars) for r in range(length))
         dots()
@@ -167,8 +167,10 @@ while True:  # MAIN MENU#
         lst = listar_archivos("data/reg/")
         rem = input("Type password name to REMOVE and press ENTER:")
         if rem in lst:
-            a = input(" Are you sure to delete current Password?\n \
-                      Please enter y/n:")
+            a = input(
+                " Are you sure to delete current Password?\n \
+                      Please enter y/n:"
+            )
             if a == "y":
                 if os.path.exists("data/reg/" + rem):
                     os.remove("data/reg/" + rem)
