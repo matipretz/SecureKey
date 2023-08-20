@@ -25,9 +25,9 @@ def dots():
 
 def clear():
     if sys.platform.startswith("win"):
-        os.system("cls")  # for Windows
+        os.system("cls")
     else:
-        os.system("clear")  # for Unix/Linux/Mac
+        os.system("clear")
 
 
 def cont():
@@ -36,12 +36,11 @@ def cont():
 
 
 def invalid():
-    print("Invalid input, please try again.")
+    print("Invalid input")
     cont()
 
 
 def save(pwd):
-    check_directories()
     while True:
         title = input("Name your password: ")
         if not title.strip():
@@ -52,7 +51,6 @@ def save(pwd):
             break
 
     file = open("data/reg/" + title, "a")
-    check_directories()
     file.write(str(pwd))
     file.close()
 
@@ -230,8 +228,13 @@ while True:  # MAIN MENU#
 
     elif choose == 6:  # EXIT#
         clear()
-        input("Press ENTER to exit")
-        sys.exit(0)
+        check = input("Are you sure you want to exit?\nPlease enter y/n: ").lower()
+        if check == "y":
+            sys.exit(0)
+        elif check == "n":
+            continue
+        else:
+            invalid()   
 
     else:
         invalid()
