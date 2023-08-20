@@ -41,16 +41,25 @@ def invalid():
 
 
 def save(pwd):
+    check_directories()
     while True:
         title = input("Name your password: ")
-        if title.strip():
-            break
-        else:
+        if not title.strip():
             print("Password name cannot be empty. Please enter a valid name.")
-    check_directories()
+        elif check_file(title):
+            print("Password name already in use, choose another.")
+        else:
+            break
+
     file = open("data/reg/" + title, "a")
+    check_directories()
     file.write(str(pwd))
     file.close()
+
+
+def check_file(title):
+    file_path = os.path.join("data/reg/", title)
+    return os.path.exists(file_path)
 
 
 def listar_archivos(directorio):
@@ -111,9 +120,9 @@ while True:  # MAIN MENU#
         except ValueError:
             invalid()
             continue
-        chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz\
-                 0123456789!@#$%^&*.()"
-        mylength = length
+        chars = (
+            "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*.()"
+        )
         password = "".join(random.choice(chars) for r in range(length))
         dots()
         print("Password generated:", password)
