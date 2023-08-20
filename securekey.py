@@ -36,7 +36,7 @@ def cont():
 
 
 def invalid():
-    print("Invalid input")
+    print("Invalid input.")
     cont()
 
 
@@ -234,7 +234,7 @@ while True:  # MAIN MENU#
         elif check == "n":
             continue
         else:
-            invalid()   
+            invalid()
 
     else:
         invalid()
